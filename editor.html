@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Code Editor</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body onload="loadding(), name()">
+    <div id="loadding"></div>
+    <div class="header">
+      <div class="logo">< &nbsp; Live Code /></div>
+      <div class="name"><a href="index.html" id="name"></a></div>
+    </div>
+    <div class="main">
+      <div class="code-area">
+        <div class="htmlbody">
+          <div class="title"><p>HTML</p></div>
+          <div class="textarea">
+            <textarea
+              id="html"
+              oninput="run()"
+              placeholder="HTML Code ......."
+            ></textarea>
+          </div>
+        </div>
+        <div class="cssbody">
+          <div class="title"><p>CSS</p></div>
+          <div class="textarea">
+            <textarea
+              id="css"
+              oninput="run()"
+              placeholder="CSS Code ......."
+            ></textarea>
+          </div>
+        </div>
+        <div class="jsbody">
+          <div class="title"><p>JS</p></div>
+          <div class="textarea">
+            <textarea
+              id="js"
+              oninput="run()"
+              placeholder="Javascript Code ......."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="preview-area">
+        <iframe id="output"></iframe>
+      </div>
+    </div>
+    <div class="footer">
+      <p>Copyright © 2021 Alok kumar</p>
+    </div>
+
+    <script type="text/javascript">
+      function run() {
+        var htmlcode = document.getElementById("html").value;
+        var csscode =
+          "<style>" + document.getElementById("css").value + "</style>";
+        var jscode =
+          "<scri" +
+          "pt>" +
+          document.getElementById("js").value +
+          "</scri" +
+          "pt>";
+        var output = document.getElementById("output").contentWindow.document;
+
+        output.open();
+        output.write(htmlcode + csscode + jscode);
+        output.close();
+      }
+
+      function loadding() {
+        var preloader = document.getElementById("loadding");
+
+        preloader.style.display = "none";
+      }
+
+      function name() {
+        var person = prompt("Please enter your name", " raj");
+
+        if (person != null) {
+          document.getElementById("name").innerHTML = person;
+        }
+      }
+    </script>
+  </body>
+</html>
